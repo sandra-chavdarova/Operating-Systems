@@ -30,7 +30,7 @@ StudentID,Name,Math,Science,English,History
 
 ### Пример за очекуван излез
 Exam Scores Analysis</br>
--------------------
+\-------------------
 Total Number of Students: 3
 
 Subject Averages:
