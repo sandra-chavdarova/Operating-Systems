@@ -29,21 +29,21 @@ StudentID,Name,Math,Science,English,History
 ...
 
 ### Пример за очекуван излез
-Exam Scores Analysis
-\-------------------
-Total Number of Students: 3
-
-Subject Averages:
-Math:     83.33
-Science:  85.67
-English:  85.00
-History:  87.33
-
-Subject Extreme Performers:
-Math - Highest: Bob Smith (Score: 90), Lowest: Charlie Brown (Score: 75)
-Science - Highest: Alice Johnson (Score: 92), Lowest: Charlie Brown (Score: 80)
-English - Highest: Bob Smith (Score: 92), Lowest: Alice Johnson (Score: 78)
-History - Highest: Charlie Brown (Score: 95), Lowest: Bob Smith (Score: 79)
+Exam Scores Analysis</br>
+\-------------------</br>
+Total Number of Students: 3</br>
+</br>
+Subject Averages:</br>
+Math:     83.33</br>
+Science:  85.67</br>
+English:  85.00</br>
+History:  87.33</br>
+</br>
+Subject Extreme Performers:</br>
+Math - Highest: Bob Smith (Score: 90), Lowest: Charlie Brown (Score: 75)</br>
+Science - Highest: Alice Johnson (Score: 92), Lowest: Charlie Brown (Score: 80)</br>
+English - Highest: Bob Smith (Score: 92), Lowest: Alice Johnson (Score: 78)</br>
+History - Highest: Charlie Brown (Score: 95), Lowest: Bob Smith (Score: 79)</br>
 
 Вашата shell скрипта мора да:
 1. Прифати патеката на CSV датотеката како прв аргумент при извршување
