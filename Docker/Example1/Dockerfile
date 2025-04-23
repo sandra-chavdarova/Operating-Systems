@@ -2,7 +2,7 @@ FROM eclipse-temurin
 
 WORKDIR /app
 
-COPY .. .
+COPY . .
 
 RUN javac Main.java
 
