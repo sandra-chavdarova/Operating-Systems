@@ -1,6 +1,6 @@
 FROM eclipse-temurin
 
-WORKDIR /app
+WORKDIR /usr/src/myapp
 
 COPY . .
 
