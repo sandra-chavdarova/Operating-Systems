@@ -11,6 +11,7 @@ $ docker run --rm example1
 
 Битно е во кодот од `Main.java` најгоре да не стои било каков package за да работи Dockerfile-от.
 
+
 # Example 2
 
 Преку Git Bash се оди до датотеката која ја содржи `ExecutionCounter.java`, во овој случај
@@ -19,17 +20,17 @@ $ docker run --rm example1
 
 ```
 $ docker build -t example2 .
-$  winpty docker run -it -v "$(pwd)/data:/usr/src/myapp/data/" --rm --name counter-java example2
+$ winpty docker run -it -v "$(pwd)/data:/usr/src/myapp/data/" --rm --name counter-java example2
 ```
 Output: 1
 
 ```
-$  winpty docker run -it -v "$(pwd)/data:/usr/src/myapp/data/" --rm --name counter-java example2
+$ winpty docker run -it -v "$(pwd)/data:/usr/src/myapp/data/" --rm --name counter-java example2
 ```
 Output: 2
 
 ```
-$  winpty docker run -it -v "$(pwd)/data:/usr/src/myapp/data/" --rm --name counter-java example2
+$ winpty docker run -it -v "$(pwd)/data:/usr/src/myapp/data/" --rm --name counter-java example2
 ```
 Output: 3
 
