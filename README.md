@@ -5,3 +5,5 @@ This repository contains solved exercises from the course Operating Systems.
 - Shell Scripts
 - Synchronization and Multithreading (Java)
 - Docker
+- Docker Compose
+
