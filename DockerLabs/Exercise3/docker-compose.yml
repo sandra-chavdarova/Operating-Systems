@@ -1,0 +1,35 @@
+services:
+  sensor:
+    build:
+      context: ./Sensor
+    volumes:
+      - temperature:/usr/src/shared
+    container_name: temperature-sensor
+    networks:
+      - temperature-level-network
+    ports:
+      - "8080:8080"
+
+  monitor:
+    build:
+      context: ./Monitor
+    volumes:
+      - temperature:/usr/src/shared
+      - temperaturelevel:/usr/src/level
+    container_name: temperature-monitor
+    environment:
+      - LOW_TEMPERATURE=5
+      - MEDIUM_TEMPERATURE=19
+      - HIGH_TEMPERATURE=35
+    networks:
+      - temperature-level-network
+    ports:
+      - "8081:8081"
+
+volumes:
+  temperature:
+  temperaturelevel:
+
+networks:
+  temperature-level-network:
+    driver: bridge

@@ -1,4 +1,4 @@
- package DockerLabs;
+ package DockerLabs.Exercise1;
 
 import java.io.*;
 

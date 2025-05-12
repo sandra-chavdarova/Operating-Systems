@@ -1,0 +1,14 @@
+services:
+  sensor:
+    build:
+      context: ./Sensor
+    volumes:
+      - ./shared:/data
+    container_name: temperature-sensor
+
+  monitor:
+    build:
+      context: ./Monitor
+    volumes:
+      - ./shared:/data
+    container_name: temperature-monitor

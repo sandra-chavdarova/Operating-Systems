@@ -1,0 +1,75 @@
+docker-compose up -d --build
+
+Output:
+Building sensor
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  3.584kB
+Step 1/5 : FROM eclipse-temurin
+ ---> 2712a3631a75
+Step 2/5 : WORKDIR /usr/src/myapp
+ ---> Using cache
+ ---> 1c2d776e7b96
+Step 3/5 : COPY . .
+ ---> Using cache
+ ---> 875da169c500
+Step 4/5 : RUN javac TemperatureSensor.java
+ ---> Using cache
+ ---> 1f9819087ba3
+Step 5/5 : CMD ["java", "TemperatureSensor"]
+ ---> Using cache
+ ---> 02849cd907a9
+Successfully built 02849cd907a9
+Successfully tagged serverroomtemperature_sensor:latest
+Building monitor
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  4.096kB
+Step 1/5 : FROM eclipse-temurin
+ ---> 2712a3631a75
+Step 2/5 : WORKDIR /usr/src/myapp
+ ---> Using cache
+ ---> 1c2d776e7b96
+Step 3/5 : COPY . .
+ ---> 3b827fd7a1b1
+Step 4/5 : RUN javac TemperatureMonitor.java
+ ---> Running in 1db0a30b8a1a
+ ---> Removed intermediate container 1db0a30b8a1a
+ ---> 2c6812daf885
+Step 5/5 : CMD ["java", "TemperatureMonitor"]
+ ---> Running in 9ab1cb5429f0
+ ---> Removed intermediate container 9ab1cb5429f0
+ ---> e3f1515a3d42
+Successfully built e3f1515a3d42
+Successfully tagged serverroomtemperature_monitor:latest
+Creating temperature-monitor ... done
+Creating temperature-sensor  ... done
+
+
+docker ps
+
+Output:
+CONTAINER ID   IMAGE                           COMMAND                  CREATED          STATUS          PORTS     NAMES
+dd7cea2e5284   serverroomtemperature_monitor   "/__cacert_entrypoin…"   19 seconds ago   Up 18 seconds             temperature-monitor
+fa76636620bd   serverroomtemperature_sensor    "/__cacert_entrypoin…"   19 seconds ago   Up 18 seconds             temperature-sensor
+
+
+docker-compose down
+
+Output:
+Stopping temperature-monitor ... done
+Stopping temperature-sensor  ... done
+Removing temperature-monitor ... done
+Removing temperature-sensor  ... done
+Removing network serverroomtemperature_default
+
+
+docker ps
+
+Output:
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
