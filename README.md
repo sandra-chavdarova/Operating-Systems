@@ -6,4 +6,5 @@ This repository contains solved exercises from the course Operating Systems.
 - Synchronization and Multithreading (Java)
 - Docker
 - Docker Compose
+- Networking
 
