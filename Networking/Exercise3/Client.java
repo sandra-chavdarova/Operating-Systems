@@ -29,6 +29,7 @@ public class Client extends Thread {
             String line = reader.readLine();
 
             if (line.contains("Logged in")) {
+                System.out.println(line);
                 String number;
                 while ((number = fileReader.readLine()) != null) {
                     writer.write(number + "\n");
