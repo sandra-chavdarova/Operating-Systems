@@ -6,11 +6,11 @@ import java.net.Socket;
 
 public class Server extends Thread {
     int port;
-    String logFilePath;
+    String fileName;
 
-    public Server(int port, String logFilePath) {
+    public Server(int port, String fileName) {
         this.port = port;
-        this.logFilePath = logFilePath;
+        this.fileName = fileName;
     }
 
     @Override
@@ -18,27 +18,19 @@ public class Server extends Thread {
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(port);
+
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                System.out.println("Worker started...");
+                new Worker(clientSocket, fileName).start();
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-
-        System.out.println("Socket created");
-        while (true) {
-            System.out.println("Waiting for connection...");
-            try {
-                Socket socket = serverSocket.accept();
-                System.out.println("New connection");
-                new Worker(socket, logFilePath).start();
-                System.out.println("Worker started");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 
     public static void main(String[] args) {
-        String filePath = "Networking/Exercise3/logs.txt";
-        Server server = new Server(7391, filePath);
+        Server server = new Server(8080, "Networking/Exercise3/logging.txt");
         server.start();
     }
 }

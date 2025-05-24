@@ -5,63 +5,46 @@ import java.net.InetAddress;
 import java.net.Socket;
 
 public class Client extends Thread {
-    String address;
     int port;
-    String filePath;
+    String address;
 
-    public Client(String address, int port, String filePath) {
-        this.address = address;
+    public Client(int port, String address) {
         this.port = port;
-        this.filePath = filePath;
+        this.address = address;
     }
 
     @Override
     public void run() {
+        Socket socket = null;
+        BufferedReader reader = null;
+        BufferedWriter writer = null;
         try {
-            Socket socket = new Socket(InetAddress.getByName(address), port);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-            BufferedReader fileReader = new BufferedReader(new FileReader(filePath));
+            socket = new Socket(InetAddress.getByName(address), port);
+            reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
-            writer.write("HANDSHAKE\n");
+            writer.write("GET /hello HTTP/1.1");
+            writer.newLine();
+            writer.write("Host: developer.mozilla.org");
+            writer.newLine();
+            writer.write("User agent: OS Client");
+            writer.newLine();
+            writer.newLine();
             writer.flush();
 
             String line = reader.readLine();
-
-            if (line.contains("Logged in")) {
-                System.out.println(line);
-                String number;
-                while ((number = fileReader.readLine()) != null) {
-                    writer.write(number + "\n");
-                }
-                writer.write("STOP\n");
-                writer.flush();
-
+            ;
+            while (line != null) {
+                System.out.println("Client received: " + line);
                 line = reader.readLine();
-                System.out.println("Total sum: " + line);
-                line = reader.readLine();
-                System.out.println(line);
-
-                fileReader.close();
-                reader.close();
-                writer.close();
-                socket.close();
-            } else {
-                System.out.println(line);
-                fileReader.close();
-                reader.close();
-                writer.close();
-                socket.close();
             }
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     public static void main(String[] args) {
-        String filePath = "Networking/Exercise3/numbers.txt";
-        Client client = new Client("127.0.0.1", 7391, filePath);
+        Client client = new Client(8080, "localhost");
         client.start();
     }
 }
