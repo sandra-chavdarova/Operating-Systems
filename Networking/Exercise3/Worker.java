@@ -39,10 +39,12 @@ public class Worker extends Thread {
             writer.newLine();
             writer.flush();
 
+            writer.write("Logged out\n");
+            writer.flush();
+
             writer.close();
             reader.close();
             clientSocket.close();
-            System.out.println("Logging out...");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

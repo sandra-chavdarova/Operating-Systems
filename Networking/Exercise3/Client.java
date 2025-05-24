@@ -33,7 +33,7 @@ public class Client extends Thread {
             writer.flush();
 
             String line = reader.readLine();
-            ;
+
             while (line != null) {
                 System.out.println("Client received: " + line);
                 line = reader.readLine();
