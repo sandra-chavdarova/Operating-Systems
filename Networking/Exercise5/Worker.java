@@ -62,6 +62,8 @@ public class Worker extends Thread {
                 }
                 writer.write(String.valueOf(counter));
                 writer.newLine();
+                writer.write("LOGGED OUT");
+                writer.newLine();
                 writer.flush();
 
                 reader.close();
