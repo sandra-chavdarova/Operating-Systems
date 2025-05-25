@@ -29,7 +29,7 @@ public class Worker extends Thread {
         try {
             reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-            fileWriter = new BufferedWriter(new FileWriter(fileName));
+            fileWriter = new BufferedWriter(new FileWriter(fileName, true));
 
             String line = "START " + socket.getRemoteSocketAddress();
             writer.write(line);
