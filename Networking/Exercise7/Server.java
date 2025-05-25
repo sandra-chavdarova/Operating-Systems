@@ -6,11 +6,11 @@ import java.net.Socket;
 
 public class Server extends Thread {
     int port;
-    String fileName;
+    String fileOutput;
 
     public Server(int port, String fileName) {
         this.port = port;
-        this.fileName = fileName;
+        this.fileOutput = fileName;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Server extends Thread {
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Worker started...");
-                new Worker(clientSocket, fileName).start();
+                new Worker(clientSocket, fileOutput).start();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
